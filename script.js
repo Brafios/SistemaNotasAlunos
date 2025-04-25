@@ -84,19 +84,37 @@ mostrarResultados()
 
 function atualizarNota(){
     const nomeAluno = prompt("digite o nome do aluno que queira alterar nota").toUpperCase();
-    const alunoRemovido = alunos.findIndex(aluno => aluno.nome === nomeAluno);
+    const notaAtualizada = alunos.findIndex(aluno => aluno.nome === nomeAluno);
 
     const menuNota = Number(prompt("Digite se quer altera apenas nota1 - 1 | apenas nota2 - 2 | alterar duas notas - 3"))
     switch (menuNota) {
       case 1:
-        aluno.nota1 = Number(prompt("Digite nova nota"))
+        if(notaAtualizada !== -1){
+          alunos[notaAtualizada].nota1 = Number(prompt("Digite nota entre 0 a 10"))
+        }
+      break;
+
+      case 2:
+        if(notaAtualizada !== -1){
+          alunos[notaAtualizada].nota2 = Number(prompt("Digite nota entre 0 a 10"))
+        }
+      break;
+
+      case 3:
+        if(notaAtualizada !== -1){
+          alunos[notaAtualizada].nota1 = Number(prompt("Digite nota entre 0 a 10"))
+          alunos[notaAtualizada].nota2 = Number(prompt("Digite nota entre 0 a 10"))
+        }
       break;
     
       default:
-        break;
+        console.log("opção invalida")
+      break;
     }
 
 }
+
+atualizarNota()
 
 
 
